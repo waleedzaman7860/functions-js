@@ -31,3 +31,14 @@ $('.alpha_numeric_dash, .no_special_chars').bind('keyup blur',function(){
    var node = $(this);
    node.val(node.val().replace(/[^a-z0-9 -]/g,'') ); }
 );
+
+/**
+SCOLL TO MIDDLE(Insted of all the way to top)
+**/
+function scroll_middle(id){
+  document.getElementById(id).scrollIntoView({
+    behavior: 'auto',
+    block: 'center',
+    inline: 'center'
+  }); 
+}
