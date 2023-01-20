@@ -42,3 +42,21 @@ function scroll_middle(id){
     inline: 'center'
   }); 
 }
+
+
+/* *
+*CLONE DIV WITH BUTTON CLICK
+* */
+function clone_html(to_clone){
+    // var button = document.getElementById(btn);
+    // var button = this;
+    var elementToClone = document.getElementsByClassName(to_clone)[0];
+
+    var newElement = elementToClone.cloneNode(true);
+    elementToClone.parentNode.appendChild(newElement);
+    console.log(newElement);
+// Add the click event listener to the button
+// button.addEventListener("click", cloneElement);
+let the_inputs = newElement.querySelector('input');
+the_inputs.value = "";
+}
