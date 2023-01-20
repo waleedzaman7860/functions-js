@@ -61,19 +61,7 @@ let the_inputs = newElement.querySelector('input');
 the_inputs.value = "";
 }
 
-
-/***
- * CHECK CURRENT PAGE IS
- * **/
-function current_page_is(the_page) {
-    var currentURL = window.location.href;
-    console.log('current URL is: '+currentURL);
-    if(the_page == currentURL){
-        return true;
-    }else{
-        return false;
-    }
-}
+ 
 
 
 /***
@@ -94,4 +82,93 @@ function ValidateEmail(input,response_div) {
         //jQuery(submit).removeAttr('disabled');
     }
 
+}
+
+/***
+ * AJAX FUNCTION FOR ONE RESPONSE
+ * **/
+function _AJAX_function_1(target, admin_ajax_url, action, type, data, data_type) {
+    //let admin_ajax_url = siteAjax();
+    // console.log(new Date());
+    jQuery.ajax({
+        url: admin_ajax_url + '?action=' + action,
+        type: type,
+        dataType: data_type,
+        data: data,
+        beforeSend: function(xhr) {
+            $(target).html('<div> Loading, Please wait...! </div>');
+            $(target).find('div').attr('id', 'loader').show();
+        },
+    }).done(function(response) { 
+            $(target).html(response.result);
+        // console.log(new Date());
+        // loader.hide();
+    }); //ajax done
+}
+
+/***
+ * AJAX FUNCTION FOR TWO RESPONSES
+ * **/
+function _AJAX_function_2(target_1,target_2,admin_ajax_url, action, type, data, data_type) {
+    //let admin_ajax_url = siteAjax();
+    // console.log(new Date());
+    jQuery.ajax({
+        url: admin_ajax_url + '?action=' + action,
+        type: type,
+        dataType: data_type,
+        data: data,
+        beforeSend: function(xhr) {
+            $(target_1).html('<div> Loading, Please wait...! </div>');
+            $(target_1).find('div').attr('id', 'loader').show();
+            $(target_2).html('<div> Loading, Please wait...! </div>');
+            $(target_2).find('div').attr('id', 'loader').show();
+        },
+    }).done(function(response) { 
+        $(target_1).html(response.result_1);
+        $(target_2).html(response.result_2);
+        // console.log(new Date());
+        // loader.hide();
+    }); //ajax done
+}
+
+/***
+ * AJAX FUNCTION FOR THREE RESPONSES
+ * **/
+function _AJAX_function_3(target_1,target_2,target_3,admin_ajax_url, action, type, data, data_type) {
+    //let admin_ajax_url = siteAjax();
+    // console.log(new Date());
+    jQuery.ajax({
+        url: admin_ajax_url + '?action=' + action,
+        type: type,
+        dataType: data_type,
+        data: data,
+        beforeSend: function(xhr) {
+            $(target_1).html('<div> Loading, Please wait...! </div>');
+            $(target_1).find('div').attr('id', 'loader').show();
+            $(target_2).html('<div> Loading, Please wait...! </div>');
+            $(target_2).find('div').attr('id', 'loader').show();
+            $(target_3).html('<div> Loading, Please wait...! </div>');
+            $(target_3).find('div').attr('id', 'loader').show();
+        },
+    }).done(function(response) { 
+        $(target_1).html(response.result_1);
+        $(target_2).html(response.result_2);
+        $(target_3).html(response.result_3);
+        // console.log(new Date());
+        // loader.hide();
+    }); //ajax done
+}
+
+
+/***
+ * CHECK CURRENT PAGE IS
+ * **/
+function current_page_is(the_page) {
+    var currentURL = window.location.href;
+    console.log('current URL is: '+currentURL);
+    if(the_page == currentURL){
+        return true;
+    }else{
+        return false;
+    }
 }
