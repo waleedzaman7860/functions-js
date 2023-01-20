@@ -54,9 +54,44 @@ function clone_html(to_clone){
 
     var newElement = elementToClone.cloneNode(true);
     elementToClone.parentNode.appendChild(newElement);
-    console.log(newElement);
+    console.log('cloned');
 // Add the click event listener to the button
 // button.addEventListener("click", cloneElement);
 let the_inputs = newElement.querySelector('input');
 the_inputs.value = "";
+}
+
+
+/***
+ * CHECK CURRENT PAGE IS
+ * **/
+function current_page_is(the_page) {
+    var currentURL = window.location.href;
+    console.log('current URL is: '+currentURL);
+    if(the_page == currentURL){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+/***
+ * CHECK EMAIL IS VALID
+ * **/
+function ValidateEmail(input,response_div) {
+
+    var validRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+    if (!input.value.match(validRegex)) {
+        // alert("Invalid email address!");
+        this.focus();
+        jQuery(response_div).html("Invalid Email. Please provide a valid email address.");
+        //jQuery(submit).attr("disabled", true);
+        return false;
+    } else {
+        jQuery('#email_response').html("");
+        //jQuery(submit).removeAttr('disabled');
+    }
+
 }
