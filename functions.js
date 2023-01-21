@@ -43,22 +43,7 @@ function scroll_middle(id){
   }); 
 }
 
-/* *
-*SELF PROVOKING CLONE/REMOVE DIV WITH BUTTON CLICK
-* */
-        (function clone_and_remove() {           
-            console.log('HELP:: parent: .clone_remove_this, add_remove: .clone_trigger, .remove_trigger');
-            $(document).on('click', '.clone_trigger', function() {
-                let its_parent = $(this).closest('.clone_remove_this');
-                its_parent.clone().insertAfter(its_parent).find("input[type=text], textarea").val("");
-            });
 
-            $(document).on('click', '.remove_trigger', function() {
-                let its_parent = $(this).closest('.clone_remove_this');
-                if ($('.clone_remove_this').length > 1) {
-                    its_parent.remove();
-                }
-            });
         })();
 
 /* *
@@ -101,6 +86,33 @@ function ValidateEmail(input,response_div) {
 
 }
 
+
+
+/***
+ * CHECK CURRENT PAGE IS
+ * **/
+function current_page_is(the_page) {
+    var currentURL = window.location.href;
+    console.log('current URL is: '+currentURL);
+    if(the_page == currentURL){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+
+
+/* * * ====================================================================================================
+ * * * * JQUERY
+ * * ======================================================================================================*/
+
+
+
+(function($) {
+    $(document).ready(function() {
+       
 /***
  * AJAX FUNCTION FOR ONE RESPONSE
  * **/
@@ -175,17 +187,23 @@ function _AJAX_function_3(target_1,target_2,target_3,admin_ajax_url, action, typ
         // loader.hide();
     }); //ajax done
 }
+ 
+/* *
+* SELF PROVOKING CLONE/REMOVE DIV WITH BUTTON CLICK
+* */
+        (function clone_and_remove() {           
+            console.log('HELP:: parent: .clone_remove_this, add_remove: .clone_trigger, .remove_trigger');
+            $(document).on('click', '.clone_trigger', function() {
+                let its_parent = $(this).closest('.clone_remove_this');
+                its_parent.clone().insertAfter(its_parent).find("input[type=text], textarea").val("");
+            });
 
-
-/***
- * CHECK CURRENT PAGE IS
- * **/
-function current_page_is(the_page) {
-    var currentURL = window.location.href;
-    console.log('current URL is: '+currentURL);
-    if(the_page == currentURL){
-        return true;
-    }else{
-        return false;
-    }
-}
+            $(document).on('click', '.remove_trigger', function() {
+                let its_parent = $(this).closest('.clone_remove_this');
+                if ($('.clone_remove_this').length > 1) {
+                    its_parent.remove();
+                }
+            });
+       
+    });
+})(jQuery);
