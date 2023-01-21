@@ -43,11 +43,28 @@ function scroll_middle(id){
   }); 
 }
 
+/* *
+*SELF PROVOKING CLONE/REMOVE DIV WITH BUTTON CLICK
+* */
+        (function clone_and_remove() {           
+            console.log('HELP:: parent: .clone_remove_this, add_remove: .clone_trigger, .remove_trigger');
+            $(document).on('click', '.clone_trigger', function() {
+                let its_parent = $(this).closest('.clone_remove_this');
+                its_parent.clone().insertAfter(its_parent).find("input[type=text], textarea").val("");
+            });
+
+            $(document).on('click', '.remove_trigger', function() {
+                let its_parent = $(this).closest('.clone_remove_this');
+                if ($('.clone_remove_this').length > 1) {
+                    its_parent.remove();
+                }
+            });
+        })();
 
 /* *
-*CLONE DIV WITH BUTTON CLICK
+*JAVASCRIPT: CLONE DIV WITH BUTTON CLICK
 * */
-function clone_html(to_clone){
+function clone_html(to_clone){// ADD THIS TO BUTTON NOCLICK
     // var button = document.getElementById(btn);
     // var button = this;
     var elementToClone = document.getElementsByClassName(to_clone)[0];
