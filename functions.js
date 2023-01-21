@@ -44,7 +44,7 @@ function scroll_middle(id){
 }
 
 
-        })();
+    
 
 /* *
 *JAVASCRIPT: CLONE DIV WITH BUTTON CLICK
@@ -204,6 +204,9 @@ function _AJAX_function_3(target_1,target_2,target_3,admin_ajax_url, action, typ
                     its_parent.remove();
                 }
             });
+         })();
+       
+       
        
     });
 })(jQuery);
